@@ -1,0 +1,13 @@
+.authMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.iconLogIn {
+  width: 20px;
+  height: 20px;
+  stroke: var(--color-one);
+  fill: var(--white);
+}
