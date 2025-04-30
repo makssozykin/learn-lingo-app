@@ -42,15 +42,19 @@
 .btn.btnLogIn:focus {
   color: var(--color-one);
 }
-.btn.btnSearch {
-  width: 156px;
-  background-color: var(--button-background);
-  color: var(--white);
+.btn.btnClose {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: 32px;
+  stroke: var(--main-text);
+  background-color: var(--white);
 }
 
 .btn.btnSearch:hover,
 .btn.btnSearch:focus {
-  background-color: var(--button-background-active);
+  fill: var(--color-one);
 }
 
 .btn.btnSend {

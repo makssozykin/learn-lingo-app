@@ -3,11 +3,15 @@ import { Button } from '../Button/Button.jsx';
 import sprite from '/icons/sprite.svg';
 import css from './AuthMenu.module.css';
 
-export const AuthMenu = () => {
+export const AuthMenu = ({ openModal, handleBtnAuth }) => {
+  const handleClick = btn => {
+    handleBtnAuth(btn);
+    openModal();
+  };
   return (
     <ul className={css.authMenu}>
       <li>
-        <Button title="Log in">
+        <Button title="Log in" handleClick={handleClick}>
           <svg
             width="20"
             height="20"
@@ -20,7 +24,9 @@ export const AuthMenu = () => {
         </Button>
       </li>
       <li>
-        <Button title="Registration">Registration</Button>
+        <Button title="Registration" handleClick={handleClick}>
+          Registration
+        </Button>
       </li>
     </ul>
   );

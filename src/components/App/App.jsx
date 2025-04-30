@@ -2,8 +2,6 @@ import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import { Layout } from '../Layout/Layout.jsx';
-import { RegistrationModal } from '../RegistrationModal/RegistrationModal.jsx';
-import { LoginModal } from '../LoginModal/LoginModal.jsx';
 import { RestrictedRoute } from '../RestrictedRoute.jsx';
 import { PrivateRoute } from '../PrivateRoute.jsx';
 import { NotFoundPage } from '../../pages/NotFoundPage.jsx';
