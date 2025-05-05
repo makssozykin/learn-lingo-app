@@ -13,6 +13,9 @@ export const Button = ({
     return clsx(mainClass, {
       [css.btnRegistration]: title === 'Registration',
       [css.btnLogIn]: title === 'Log in',
+      [css.loginBtn]: title === 'login',
+      [css.registerBtn]: title === 'register',
+      [css.logOutBtn]: title === 'logout',
       [css.btnClose]: title === 'close',
       [css.btnSend]: title === 'Send',
       [css.btnLoadMore]: title === 'Load more',
@@ -27,6 +30,8 @@ export const Button = ({
           ? onClick
           : title === 'Registration' || title === 'Log in'
           ? e => handleClick(e.target.innerText)
+          : title === 'logout'
+          ? onClick
           : title === 'close'
           ? closeModal
           : undefined

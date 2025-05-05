@@ -42,6 +42,42 @@
 .btn.btnLogIn:focus {
   color: var(--color-one);
 }
+
+.btn.loginBtn {
+  width: 438px;
+  background-color: var(--color-one);
+  color: var(--main-text);
+}
+
+.btn.registerBtn {
+  width: 438px;
+  background-color: var(--color-one);
+  color: var(--main-text);
+}
+
+.btn.logOutBtn {
+  width: 166px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--main-text);
+  color: var(--white);
+  padding: 14px 0;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
+.btn.logOutBtn:hover,
+.btn.logOutBtn:focus {
+  background-color: var(--color-one);
+  color: var(--main-text);
+  svg {
+    stroke: var(--main-text);
+    fill: var(--color-one);
+  }
+}
+
 .btn.btnClose {
   position: absolute;
   top: 20px;

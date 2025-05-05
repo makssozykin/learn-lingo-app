@@ -1,0 +1,21 @@
+.userMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.userMenu p {
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+}
+
+.iconLogOut {
+  width: 20px;
+  height: 20px;
+  stroke: var(--white);
+  fill: var(--main-color);
+}

@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
     "clsx": "^2.1.1",
+    "dotenv": "^16.5.0",
+    "firebase": "^11.6.1",
     "modern-normalize": "^3.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

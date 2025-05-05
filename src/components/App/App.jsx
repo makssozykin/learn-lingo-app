@@ -12,7 +12,6 @@ const TeachersPage = lazy(() =>
 const FavouritesPage = lazy(() =>
   import('../../pages/FavouritesPage/FavouritesPage.jsx')
 );
-
 function App() {
   return (
     <>
