@@ -5,10 +5,9 @@ import sprite from '/icons/sprite.svg';
 import css from './UserMenu.module.css';
 import { Button } from '../Button/Button.jsx';
 
-export const UserMenu = ({ user, setAuthUser }) => {
+export const UserMenu = ({ user }) => {
   const handleClickLogOut = () => {
     signOut(auth);
-    setAuthUser(null);
   };
   return (
     <nav className={css.userMenu}>

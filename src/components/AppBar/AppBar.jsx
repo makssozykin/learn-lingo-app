@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Logo } from '../Logo/Logo.jsx';
 import { Navigation } from '../Navigation/Navigation.jsx';
 import { UserMenu } from '../UserMenu/UserMenu.jsx';
@@ -8,26 +8,12 @@ import { GlobalModal } from '../Modal/Modal.jsx';
 import { RegistrationForm } from '../RegistrationForm/RegistrationForm.jsx';
 import { LoginForm } from '../LoginForm/LoginForm.jsx';
 import css from './AppBar.module.css';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../../firebaseConfig.js';
+import { useUser } from '../AuthProvider.jsx';
 
 export const AppBar = () => {
+  const { currentUser } = useUser();
   const { isOpenModal, openModal, closeModal } = useModal();
-  const [authUser, setAuthUser] = useState(null);
   const [btn, setBtn] = useState('');
-
-  useEffect(() => {
-    const listen = onAuthStateChanged(auth, user => {
-      if (user) {
-        setAuthUser(user);
-      } else {
-        setAuthUser(null);
-      }
-      return () => {
-        listen();
-      };
-    });
-  }, []);
 
   const handleBtnAuth = btn => {
     setBtn(btn);
@@ -37,9 +23,9 @@ export const AppBar = () => {
     <header className={css.header}>
       <div className={css.headerCont}>
         <Logo />
-        <Navigation />
-        {authUser ? (
-          <UserMenu user={authUser} setAuthUser={setAuthUser} />
+        <Navigation authUser={currentUser} />
+        {currentUser ? (
+          <UserMenu user={currentUser} />
         ) : (
           <AuthMenu openModal={openModal} handleBtnAuth={handleBtnAuth} />
         )}

@@ -21,32 +21,11 @@ function App() {
           <Route path="/teachers" element={<TeachersPage />} />
           <Route path="/favourites" element={<FavouritesPage />} />
           {/* <Route
-            path="/register"
-            element={
-              <RestrictedRoute
-                redirectTo="/teachers"
-                component={<RegistrationModal />}
-              />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <RestrictedRoute
-                redirectTo="/teachers"
-                component={<LoginModal />}
-              />
-            }
-          />
-          <Route
-            path="/favourites"
-            element={
-              <PrivateRoute
-                redirectTo="/login"
-                component={<FavouritesPage />}
-              />
-            }
-          /> */}
+              path="/favourites"
+              element={
+                <PrivateRoute redirectTo="/" component={<FavouritesPage />} />
+              }
+            /> */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Layout>
