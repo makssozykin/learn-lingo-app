@@ -34,6 +34,8 @@ export const Button = ({
           ? onClick
           : title === 'close'
           ? closeModal
+          : title === 'start'
+          ? onClick
           : undefined
       }
       className={classes(css.btn)}

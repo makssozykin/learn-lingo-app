@@ -4,10 +4,13 @@ import { auth } from '../../firebaseConfig.js';
 import sprite from '/icons/sprite.svg';
 import css from './UserMenu.module.css';
 import { Button } from '../Button/Button.jsx';
+import { useNavigate } from 'react-router-dom';
 
 export const UserMenu = ({ user }) => {
+  const navigate = useNavigate();
   const handleClickLogOut = () => {
     signOut(auth);
+    navigate('/');
   };
   return (
     <nav className={css.userMenu}>

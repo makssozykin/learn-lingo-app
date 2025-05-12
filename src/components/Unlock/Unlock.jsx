@@ -1,8 +1,12 @@
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../Button/Button.jsx';
 import css from './Unlock.module.css';
 
 export const Unlock = () => {
+  const navigate = useNavigate();
+  const handleClickStart = () => {
+    navigate('/teachers');
+  };
   return (
     <div className={css.unlockContainer}>
       <h1>
@@ -13,7 +17,9 @@ export const Unlock = () => {
         Elevate your language proficiency to new heights by connecting with
         highly qualified and experienced tutors.
       </p>
-      <Button title="start">Get started</Button>
+      <Button title="start" onClick={handleClickStart}>
+        Get started
+      </Button>
     </div>
   );
 };
