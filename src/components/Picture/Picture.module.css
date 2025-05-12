@@ -1,0 +1,43 @@
+.pictureContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 568px;
+  height: 530px;
+  z-index: -1;
+  border: none;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: var(--color-two);
+}
+
+.faceSticker {
+  position: absolute;
+  top: 80px;
+  left: 114px;
+  z-index: 1;
+  max-width: 339px;
+  max-height: 339px;
+}
+
+.macBook {
+  width: 359px;
+  height: 176px;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-image: linear-gradient(#eeb055, #d08f38);
+}
+
+.iconMac {
+  display: inline-block;
+  width: 46px;
+  height: 50px;
+  stroke-width: 0;
+  stroke: var(--color-two);
+  fill: var(--color-two);
+}

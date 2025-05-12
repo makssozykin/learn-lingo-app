@@ -17,7 +17,7 @@ export const Button = ({
       [css.registerBtn]: title === 'register',
       [css.logOutBtn]: title === 'logout',
       [css.btnClose]: title === 'close',
-      [css.btnSend]: title === 'Send',
+      [css.btnStart]: title === 'start',
       [css.btnLoadMore]: title === 'Load more',
     });
   };

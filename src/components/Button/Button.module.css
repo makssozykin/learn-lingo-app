@@ -93,15 +93,15 @@
   fill: var(--color-one);
 }
 
-.btn.btnSend {
-  width: 156px;
-  background-color: var(--button-background);
-  color: var(--white);
+.btn.btnStart {
+  width: 267px;
+  background-color: var(--color-one);
+  color: var(--main-text);
 }
 
-.btn.btnSend:hover,
-.btn.btnSend:focus {
-  background-color: var(--button-background-active);
+.btn.btnStart:hover,
+.btn.btnStart:focus {
+  background-color: var(--color-two);
 }
 
 .btn.btnLoadMore {

@@ -1,0 +1,51 @@
+.unlockContainer {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 98px 108px 98px 64px;
+  background-color: var(--background-teachers-page);
+  border: none;
+  border-radius: 30px;
+}
+
+.unlockContainer h1 {
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1.17;
+  letter-spacing: -0.96px;
+  margin-bottom: 32px;
+}
+
+.unlockContainer h1 > span {
+  position: relative;
+  z-index: 1;
+  border-radius: 8px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.unlockContainer h1 > span::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 12px;
+  left: -5px;
+  z-index: -1;
+  width: 195px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--color-two);
+}
+
+.unlockContainer p {
+  max-width: 471px;
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.375;
+  letter-spacing: -0.32px;
+  color: var(--main-text);
+  margin-bottom: 64px;
+}
