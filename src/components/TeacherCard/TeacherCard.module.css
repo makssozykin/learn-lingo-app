@@ -1,0 +1,129 @@
+.teacherCard {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 48px;
+  max-width: 1184px;
+  width: 100%;
+  padding: 24px;
+  border-radius: 24px;
+  background-color: var(--white);
+  outline: 1px solid red;
+}
+
+.photoContainer {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--color-one);
+  border-radius: 100px;
+}
+
+.teacherPhoto {
+  width: 96px;
+  height: 96px;
+  border: none;
+  border-radius: 100px;
+  object-fit: cover;
+}
+
+.circle {
+  position: absolute;
+  top: 19px;
+  left: 85px;
+  width: 12px;
+  height: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  border: none;
+  border-radius: 50%;
+}
+
+.circleOnline {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--online);
+}
+
+.teacherMainInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 968px;
+  width: 100%;
+}
+
+.teacherNameAndRate {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.teacherName {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+}
+
+.teacherName p {
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--second-text);
+}
+
+.teacherName h3 {
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--main-text);
+}
+
+.teacherRatingList {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.teacherRatingItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  p {
+    font-family: var(--main-font);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+.iconBook {
+  width: 16px;
+  height: 16px;
+  fill: var(--white);
+  stroke: var(--main-text);
+}
+
+.teacherRatingItem:nth-child(4) span {
+  color: var(--online);
+}
+
+.teacherRatingItem:nth-child(-n + 3)::after {
+  position: absolute;
+  top: 4px;
+  right: -16px;
+  content: '';
+  display: block;
+  height: 16px;
+  border-right: 1px solid var(--main-text);
+}
