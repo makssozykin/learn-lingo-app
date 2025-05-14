@@ -5,6 +5,7 @@ export const Button = ({
   title,
   type,
   onClick,
+  disabled,
   handleClick,
   closeModal,
   children,
@@ -39,6 +40,7 @@ export const Button = ({
           : undefined
       }
       className={classes(css.btn)}
+      disabled={disabled}
     >
       {children}
     </button>
