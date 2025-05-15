@@ -19,14 +19,14 @@
   align-items: center;
   justify-content: center;
   border: 3px solid var(--color-one);
-  border-radius: 100px;
+  border-radius: 50%;
 }
 
 .teacherPhoto {
   width: 96px;
   height: 96px;
   border: none;
-  border-radius: 100px;
+  border-radius: 50%;
   object-fit: cover;
 }
 

@@ -5,20 +5,27 @@ import { TeacherList } from '../../components/TeacherList/TeacherList.jsx';
 import { Button } from '../../components/Button/Button.jsx';
 
 const TeachersPage = () => {
-  const { data, loading, error, loadMore, hasMore, isFetchingMore } =
-    useFirebaseData();
-
+  const {
+    newTeachers,
+    loading,
+    error,
+    loadMore,
+    hasMoreTeachers,
+    isFetchingMore,
+  } = useFirebaseData();
+  console.log('hasMoreTeachers:', hasMoreTeachers);
+  console.log('isFetchingMore:', hasMoreTeachers);
   return (
     <Container>
       {loading && !error && <Loader />}
       {error && <p>Помилка отримання даних: {error}</p>}
-      {data && (
+      {newTeachers && (
         <section>
-          <TeacherList teachers={data} />
+          <TeacherList teachers={newTeachers} />
         </section>
       )}
       {isFetchingMore && <Loader />}
-      {hasMore && (
+      {!isFetchingMore && hasMoreTeachers && (
         <Button title="Load more" onClick={loadMore} disabled={isFetchingMore}>
           Load more
         </Button>

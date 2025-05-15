@@ -1,86 +1,81 @@
-import { useState, useEffect, useCallback } from 'react';
-import {
-  ref,
-  query,
-  orderByKey,
-  limitToFirst,
-  startAfter,
-  get,
-} from 'firebase/database';
+import { useState, useEffect } from 'react';
+import { ref, query, orderByKey, limitToFirst, get } from 'firebase/database';
 import { db } from '../firebaseConfig.js';
 
-const TEACHERS_PER_PAGE = 3;
+let TEACHERS_PER_PAGE = 3;
 
 const useFirebaseData = () => {
-  const [data, setData] = useState([]);
+  const [allTeachers, setAllTeachers] = useState([]);
+  const [newTeachers, setNewTeachers] = useState([]);
+  const [teachersPerPage, setTeachersPerPage] = useState(3);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [lastKey, setLastKey] = useState(null);
-  const [hasMore, setHasMore] = useState(true);
+  const [hasMoreTeachers, setHasMoreTeachers] = useState(false);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
 
-  const fetchData = useCallback(
-    async (initialLoad = true) => {
-      setLoading(initialLoad && true);
-      setIsFetchingMore(!initialLoad && true);
-      setError(null);
-
-      const dataRef = ref(db);
-      const queryPerPage = [orderByKey(), limitToFirst(TEACHERS_PER_PAGE)];
-
-      if (lastKey && !initialLoad) {
-        queryPerPage.push(startAfter(lastKey));
-      }
-
-      const dataQuery = query(dataRef, ...queryPerPage);
-
+  useEffect(() => {
+    const fetchAllTechers = async () => {
       try {
-        const snapshot = await get(dataQuery);
+        const teacherRef = ref(db, '/');
+        const snapshot = await get(teacherRef);
         if (snapshot.exists()) {
-          const newData = [];
-          let newLastKey = null;
-          snapshot.forEach(childSnapshot => {
-            newData.push({ key: childSnapshot.key, ...childSnapshot.val() });
-            newLastKey = childSnapshot.key;
-          });
-
-          setData(prevData =>
-            initialLoad ? newData : [...prevData, ...newData]
-          );
-          console.log(newData);
-          setLastKey(newLastKey);
-          setLoading(false);
-          setIsFetchingMore(false);
-          setHasMore(newData.length === TEACHERS_PER_PAGE);
-        } else {
-          setLoading(false);
-          setIsFetchingMore(false);
-          setHasMore(false);
-          if (initialLoad) {
-            setData([]);
-          }
+          const teachers = snapshot.val();
+          setAllTeachers(teachers);
         }
-      } catch (err) {
-        console.error('Помилка отримання даних:', err);
-        setError(err.message);
-        setLoading(false);
-        setIsFetchingMore(false);
+        console.log(allTeachers);
+      } catch (error) {
+        console.log(error.message);
       }
-    },
-    [lastKey]
-  );
+    };
+    fetchAllTechers();
+  }, []);
 
   useEffect(() => {
-    fetchData(true); // Завантаження першої порції даних при монтуванні
-  }, [fetchData]);
+    const fetchTeachers = async () => {
+      try {
+        setLoading(true);
+        const teacherRef = ref(db, '/');
 
-  const loadMore = useCallback(() => {
-    if (hasMore && !isFetchingMore) {
-      fetchData(false);
-    }
-  }, [fetchData, hasMore, isFetchingMore]);
+        let datQuery = query(
+          teacherRef,
+          orderByKey(),
+          limitToFirst(teachersPerPage)
+        );
+        setLoading(false);
+        setIsFetchingMore(true);
+        const snapshotLimit = await get(datQuery);
 
-  return { data, loading, error, loadMore, hasMore, isFetchingMore };
+        if (snapshotLimit.exists()) {
+          console.log(snapshotLimit.exists());
+          const moreTeachers = snapshotLimit.val();
+          console.log(moreTeachers);
+          setNewTeachers(moreTeachers);
+          setHasMoreTeachers(true);
+          if (Object.keys(moreTeachers).length === allTeachers.length) {
+            setHasMoreTeachers(false);
+          }
+        } else {
+          setHasMoreTeachers(false);
+        }
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setIsFetchingMore(false);
+      }
+    };
+    fetchTeachers();
+  }, [teachersPerPage]);
+
+  const loadMore = () => setTeachersPerPage(prev => prev + 3);
+
+  return {
+    newTeachers,
+    loading,
+    error,
+    loadMore,
+    hasMoreTeachers,
+    isFetchingMore,
+  };
 };
 
 export default useFirebaseData;

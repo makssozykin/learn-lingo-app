@@ -40,7 +40,7 @@ export const Button = ({
           : undefined
       }
       className={classes(css.btn)}
-      disabled={disabled}
+      disabled={title === 'Load more' && disabled}
     >
       {children}
     </button>
