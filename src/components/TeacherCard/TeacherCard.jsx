@@ -1,9 +1,21 @@
+import { Button } from '../Button/Button.jsx';
 import css from './TeacherCard.module.css';
 import sprite from '/icons/sprite.svg';
 
 export const TeacherCard = ({ teacher }) => {
-  const { avatar_url, name, surname, lessons_done, rating, price_per_hour } =
-    teacher;
+  const {
+    avatar_url,
+    name,
+    surname,
+    lessons_done,
+    rating,
+    price_per_hour,
+    languages,
+    lesson_info,
+    conditions,
+    levels,
+  } = teacher;
+
   return (
     <li className={css.teacherCard}>
       <div className={css.photoContainer}>
@@ -56,6 +68,24 @@ export const TeacherCard = ({ teacher }) => {
             </li>
           </ul>
         </div>
+        <div>
+          <p>
+            Speaks: <span>{`${languages.join(', ')}`}</span>
+          </p>
+          <p>
+            Lessons info: <span>{lesson_info}</span>
+          </p>
+          <p>
+            Conditions: <span>{`${conditions.join(' ')}`}</span>
+          </p>
+        </div>
+        <Button>Read more</Button>
+        <ul>
+          {levels.map((level, index) => (
+            <li key={index}>{level}</li>
+          ))}
+        </ul>
+        <Button>Book trial lesson</Button>
       </div>
     </li>
   );
