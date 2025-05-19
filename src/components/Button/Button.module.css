@@ -7,7 +7,7 @@
   font-family: var(--main-font);
   font-weight: 700;
   font-size: 18px;
-  line-height: 1.55;
+  line-height: 28px;
 }
 
 .btn.btnRegistration {
@@ -113,4 +113,19 @@
 .btn.btnLoadMore:hover,
 .btn.btnLoadMore:focus {
   background-color: var(--color-two);
+}
+
+.btnReadMore {
+  padding: 0;
+  text-decoration: underline;
+  font-family: var(--main-text);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 32px;
+}
+
+.btnBookTrial {
+  background-color: var(--color-one);
+  padding: 16px 48px;
 }

@@ -20,6 +20,8 @@ export const Button = ({
       [css.btnClose]: title === 'close',
       [css.btnStart]: title === 'start',
       [css.btnLoadMore]: title === 'Load more',
+      [css.btnReadMore]: title === 'Read more',
+      [css.btnBookTrial]: title === 'Book trial',
     });
   };
 
@@ -36,6 +38,10 @@ export const Button = ({
           : title === 'close'
           ? closeModal
           : title === 'start'
+          ? onClick
+          : title === 'Read more'
+          ? onClick
+          : title === 'Book trial'
           ? onClick
           : undefined
       }

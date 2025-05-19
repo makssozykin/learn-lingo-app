@@ -2,3 +2,8 @@
   width: 100%;
   padding: 0 64px;
 }
+
+.teachersPageCont {
+  padding: 96px 128px;
+  background-color: var(--background-teachers-page);
+}

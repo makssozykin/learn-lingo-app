@@ -8,7 +8,6 @@
   padding: 24px;
   border-radius: 24px;
   background-color: var(--white);
-  outline: 1px solid red;
 }
 
 .photoContainer {
@@ -63,6 +62,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  margin-bottom: 32px;
 }
 .teacherName {
   display: flex;
@@ -126,4 +126,49 @@
   display: block;
   height: 16px;
   border-right: 1px solid var(--main-text);
+}
+
+.teacherInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.teacherInfo p {
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--second-text);
+}
+
+.teacherInfo p > span {
+  color: var(--main-text);
+}
+
+.teacherInfo p:nth-child(1) > span {
+  text-decoration: underline;
+}
+
+.langList {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 8px;
+}
+
+.langItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px;
+  border: 1px solid rgba(var(--main-text-rgb), 0.2);
+  border-radius: 35px;
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
 }

@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { Button } from '../Button/Button.jsx';
 import css from './TeacherCard.module.css';
 import sprite from '/icons/sprite.svg';
+import { ReadMoreTeacher } from '../ReadMoreTeacher/ReadMoreTeacher.jsx';
 
 export const TeacherCard = ({ teacher }) => {
   const {
@@ -14,8 +16,14 @@ export const TeacherCard = ({ teacher }) => {
     lesson_info,
     conditions,
     levels,
+    experience,
+    reviews,
   } = teacher;
+  const [toggleReadMore, setToggleReadMore] = useState(false);
 
+  const handleClickReadMore = () => {
+    setToggleReadMore(!toggleReadMore);
+  };
   return (
     <li className={css.teacherCard}>
       <div className={css.photoContainer}>
@@ -68,7 +76,7 @@ export const TeacherCard = ({ teacher }) => {
             </li>
           </ul>
         </div>
-        <div>
+        <div className={css.teacherInfo}>
           <p>
             Speaks: <span>{`${languages.join(', ')}`}</span>
           </p>
@@ -79,13 +87,25 @@ export const TeacherCard = ({ teacher }) => {
             Conditions: <span>{`${conditions.join(' ')}`}</span>
           </p>
         </div>
-        <Button>Read more</Button>
-        <ul>
-          {levels.map((level, index) => (
-            <li key={index}>{level}</li>
-          ))}
-        </ul>
-        <Button>Book trial lesson</Button>
+        <Button title="Read more" onClick={handleClickReadMore}>
+          Read more
+        </Button>
+        {toggleReadMore && (
+          <ReadMoreTeacher
+            experience={experience}
+            reviews={reviews}
+            levels={levels}
+          />
+        )}
+        {!toggleReadMore && (
+          <ul className={css.langList}>
+            {levels.map((level, index) => (
+              <li key={index} className={css.langItem}>
+                {`#${level}`}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </li>
   );

@@ -16,7 +16,7 @@ const TeachersPage = () => {
   console.log('hasMoreTeachers:', hasMoreTeachers);
   console.log('isFetchingMore:', hasMoreTeachers);
   return (
-    <Container>
+    <Container title="TeachersPage">
       {loading && !error && <Loader />}
       {error && <p>Помилка отримання даних: {error}</p>}
       {newTeachers && (

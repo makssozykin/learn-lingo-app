@@ -6,7 +6,7 @@ import css from './HomePage.module.css';
 
 const HomePage = () => {
   return (
-    <Container>
+    <Container title="HomePage">
       <div className={css.sectionHome}>
         <div className={css.unlockContainer}>
           <Unlock />
