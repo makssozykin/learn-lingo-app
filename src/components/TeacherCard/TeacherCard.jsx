@@ -92,6 +92,8 @@ export const TeacherCard = ({ teacher }) => {
         </Button>
         {toggleReadMore && (
           <ReadMoreTeacher
+            avatar={avatar_url}
+            teacherFullName={`${name} ${surname}`}
             experience={experience}
             reviews={reviews}
             levels={levels}

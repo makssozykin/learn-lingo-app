@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '../Button/Button.jsx';
 import css from './ReadMoreTeacher.module.css';
 import { useModal } from '../../hooks/Toggle.js';
 import { GlobalModal } from '../Modal/Modal.jsx';
-import { LoginForm } from '../LoginForm/LoginForm.jsx';
 import { Reviews } from '../Reviews/Reviews.jsx';
+import { BookForm } from '../BookForm/BookForm.jsx';
 
-export const ReadMoreTeacher = ({ experience, reviews, levels }) => {
+export const ReadMoreTeacher = ({
+  avatar,
+  teacherFullName,
+  experience,
+  reviews,
+  levels,
+}) => {
+  const [active, setActive] = useState(false);
   const { isOpenModal, openModal, closeModal } = useModal();
+  const handleBookClick = () => {
+    openModal();
+    setActive(true);
+  };
   return (
     <>
       <p className={css.experienceText}>{experience}</p>
@@ -19,11 +30,20 @@ export const ReadMoreTeacher = ({ experience, reviews, levels }) => {
           </li>
         ))}
       </ul>
-      <Button title="Book trial" onClick={openModal}>
+      <Button title="Book trial" onClick={handleBookClick}>
         Book trial lesson
       </Button>
-      <GlobalModal isOpenModal={isOpenModal} closeModal={closeModal}>
-        <LoginForm closeModal={closeModal} />
+      <GlobalModal
+        title="Book trial"
+        isOpenModal={isOpenModal}
+        closeModal={closeModal}
+        active={active}
+      >
+        <BookForm
+          closeModal={closeModal}
+          avatar={avatar}
+          teacherFullName={teacherFullName}
+        />
       </GlobalModal>
     </>
   );

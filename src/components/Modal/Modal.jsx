@@ -1,10 +1,26 @@
-import React from 'react';
 import Modal from 'react-modal';
 import { Button } from '../Button/Button.jsx';
 import sprite from '/icons/sprite.svg';
 import css from './Modal.module.css';
+import { useEffect } from 'react';
 
 export const GlobalModal = ({ isOpenModal, closeModal, children }) => {
+  useEffect(() => {
+    if (isOpenModal) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Очищення при розмонтуванні компонента
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpenModal]);
+
+  if (!isOpenModal) {
+    return null;
+  }
   return (
     <Modal
       isOpen={isOpenModal}

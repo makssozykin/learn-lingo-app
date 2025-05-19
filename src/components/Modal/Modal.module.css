@@ -5,6 +5,29 @@
   transform: translate(-50%, -50%);
 }
 
+.bookModal {
+  position: absolute;
+  top: 0;
+  right: -600px;
+  max-width: 600px;
+  width: 100%;
+  transition: right 0.8s ease-in-out;
+}
+
+.active {
+  right: 0;
+  transition: right 0.8s ease-in-out;
+  .modalContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 64px;
+    border-radius: 0;
+    background-color: var(--white);
+  }
+}
+
 .overlay {
   position: fixed;
   top: 0;
