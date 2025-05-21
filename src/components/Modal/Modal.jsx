@@ -12,7 +12,6 @@ export const GlobalModal = ({ isOpenModal, closeModal, children }) => {
       document.body.style.overflow = 'unset';
     }
 
-    // Очищення при розмонтуванні компонента
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -21,6 +20,7 @@ export const GlobalModal = ({ isOpenModal, closeModal, children }) => {
   if (!isOpenModal) {
     return null;
   }
+
   return (
     <Modal
       isOpen={isOpenModal}

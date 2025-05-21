@@ -1,4 +1,112 @@
 .bookForm {
-  max-width: 600px;
+  max-width: 472px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.bookTitle {
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  margin-bottom: 20px;
+}
+
+.bookText {
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  color: rgba(var(--main-text-rgb), 0.8);
+  margin-bottom: 20px;
+}
+
+.teacherInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 40px;
+}
+
+.teacherAvatar {
+  max-width: 44px;
+  max-height: 44px;
   width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.teacherAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.teacherFullName {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+}
+
+.teacherFullName p:nth-child(1) {
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--second-text);
+}
+
+.teacherFullName p:nth-child(2) {
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--main-text);
+}
+
+.bookQuestion {
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 20px;
+}
+
+.bookAnswer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.bookInputs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 40px;
+}
+
+.bookInput {
+  width: 100%;
+  border: 1px solid rgba(var(--main-text-rgb), 0.1);
+  border-radius: 12px;
+  padding: 16px 8px;
+  font-family: var(--main-font);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 22px;
+  &::placeholder {
+    color: var(--main-text);
+  }
 }

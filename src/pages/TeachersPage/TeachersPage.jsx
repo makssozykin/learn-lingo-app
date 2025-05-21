@@ -3,6 +3,7 @@ import { Loader } from '../../components/Loader/Loader.jsx';
 import { Container } from '../../components/Container/Container.jsx';
 import { TeacherList } from '../../components/TeacherList/TeacherList.jsx';
 import { Button } from '../../components/Button/Button.jsx';
+import css from './TeachersPage.module.css';
 
 const TeachersPage = () => {
   const {
@@ -17,19 +18,21 @@ const TeachersPage = () => {
   console.log('isFetchingMore:', hasMoreTeachers);
   return (
     <Container title="TeachersPage">
-      {loading && !error && <Loader />}
-      {error && <p>Помилка отримання даних: {error}</p>}
-      {newTeachers && (
-        <section>
-          <TeacherList teachers={newTeachers} />
-        </section>
-      )}
-      {isFetchingMore && <Loader />}
-      {!isFetchingMore && hasMoreTeachers && (
-        <Button title="Load more" onClick={loadMore} disabled={isFetchingMore}>
-          Load more
-        </Button>
-      )}
+      <section className={css.teachersSection}>
+        {loading && !error && <Loader />}
+        {error && <p>Помилка отримання даних: {error}</p>}
+        {newTeachers && <TeacherList teachers={newTeachers} />}
+        {isFetchingMore && <Loader />}
+        {!isFetchingMore && hasMoreTeachers && (
+          <Button
+            title="Load more"
+            onClick={loadMore}
+            disabled={isFetchingMore}
+          >
+            Load more
+          </Button>
+        )}
+      </section>
     </Container>
   );
 };

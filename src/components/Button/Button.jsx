@@ -22,6 +22,7 @@ export const Button = ({
       [css.btnLoadMore]: title === 'Load more',
       [css.btnReadMore]: title === 'Read more',
       [css.btnBookTrial]: title === 'Book trial',
+      [css.btnBook]: title === 'Book',
     });
   };
 

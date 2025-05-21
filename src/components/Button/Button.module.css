@@ -11,8 +11,8 @@
 }
 
 .btn.btnRegistration {
-  width: 166px;
-  padding: 14px 0;
+  max-width: 166px;
+  padding: 14px 39px;
   font-size: 16px;
   line-height: 1.25;
   background-color: var(--main-text);
@@ -126,6 +126,12 @@
 }
 
 .btnBookTrial {
+  background-color: var(--color-one);
+  padding: 16px 48px;
+}
+
+.btnBook {
+  width: 100%;
   background-color: var(--color-one);
   padding: 16px 48px;
 }

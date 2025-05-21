@@ -1,10 +1,6 @@
-.teacherList {
-  width: 100%;
+/* .teachersSection {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 32px;
-  margin-bottom: 64px;
-}
+} */
