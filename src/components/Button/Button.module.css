@@ -135,3 +135,13 @@
   background-color: var(--color-one);
   padding: 16px 48px;
 }
+
+.btnResetForm {
+  background-color: var(--color-one);
+  padding: 16px 24px;
+}
+
+.btnResetForm:hover,
+.btnResetForm:focus {
+  background-color: var(--color-two);
+}

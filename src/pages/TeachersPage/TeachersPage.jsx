@@ -4,6 +4,7 @@ import { Container } from '../../components/Container/Container.jsx';
 import { TeacherList } from '../../components/TeacherList/TeacherList.jsx';
 import { Button } from '../../components/Button/Button.jsx';
 import css from './TeachersPage.module.css';
+import { Filters } from '../../components/Filters/Filters.jsx';
 
 const TeachersPage = () => {
   const {
@@ -14,13 +15,13 @@ const TeachersPage = () => {
     hasMoreTeachers,
     isFetchingMore,
   } = useFirebaseData();
-  console.log('hasMoreTeachers:', hasMoreTeachers);
-  console.log('isFetchingMore:', hasMoreTeachers);
+
   return (
     <Container title="TeachersPage">
       <section className={css.teachersSection}>
         {loading && !error && <Loader />}
         {error && <p>Помилка отримання даних: {error}</p>}
+        <Filters />
         {newTeachers && <TeacherList teachers={newTeachers} />}
         {isFetchingMore && <Loader />}
         {!isFetchingMore && hasMoreTeachers && (

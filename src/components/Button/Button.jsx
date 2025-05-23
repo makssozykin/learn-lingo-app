@@ -23,6 +23,7 @@ export const Button = ({
       [css.btnReadMore]: title === 'Read more',
       [css.btnBookTrial]: title === 'Book trial',
       [css.btnBook]: title === 'Book',
+      [css.btnResetForm]: title === 'Reset',
     });
   };
 
@@ -43,6 +44,8 @@ export const Button = ({
           : title === 'Read more'
           ? onClick
           : title === 'Book trial'
+          ? onClick
+          : title === 'Reset'
           ? onClick
           : undefined
       }

@@ -30,6 +30,8 @@ const useFirebaseData = () => {
     fetchAllTechers();
   }, []);
 
+  console.log(allTeachers);
+
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
@@ -69,6 +71,7 @@ const useFirebaseData = () => {
   const loadMore = () => setTeachersPerPage(prev => prev + 3);
 
   return {
+    allTeachers,
     newTeachers,
     loading,
     error,
