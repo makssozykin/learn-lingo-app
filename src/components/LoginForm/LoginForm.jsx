@@ -7,8 +7,11 @@ import sprite from '/icons/sprite.svg';
 import css from './LoginForm.module.css';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebaseConfig.js';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/auth/slice.js';
 
 export const LoginForm = ({ closeModal }) => {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePassword = () => setShowPassword(!showPassword);
@@ -32,7 +35,15 @@ export const LoginForm = ({ closeModal }) => {
   const onSubmit = data => {
     const { email, password } = data;
     console.log(data);
-    signInWithEmailAndPassword(auth, email, password);
+    signInWithEmailAndPassword(auth, email, password).then(({ user }) => {
+      dispatch(
+        setUser({
+          name: user.displayName,
+          email: user.email,
+          token: user.accessToken,
+        })
+      );
+    });
     reset();
     closeModal();
   };

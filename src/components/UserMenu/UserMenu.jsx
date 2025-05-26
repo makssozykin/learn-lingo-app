@@ -5,16 +5,21 @@ import sprite from '/icons/sprite.svg';
 import css from './UserMenu.module.css';
 import { Button } from '../Button/Button.jsx';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { removeUser } from '../../redux/auth/slice.js';
 
 export const UserMenu = ({ user }) => {
+  console.log(user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleClickLogOut = () => {
     signOut(auth);
+    dispatch(removeUser());
     navigate('/');
   };
   return (
     <nav className={css.userMenu}>
-      <p>{user.displayName.split(' ')[0]}</p>
+      <p>{user.name.split(' ')[0]}</p>
       <Button title="logout" onClick={handleClickLogOut}>
         <svg
           width="20"

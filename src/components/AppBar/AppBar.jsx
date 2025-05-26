@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Logo } from '../Logo/Logo.jsx';
 import { Navigation } from '../Navigation/Navigation.jsx';
 import { UserMenu } from '../UserMenu/UserMenu.jsx';
@@ -8,10 +8,13 @@ import { GlobalModal } from '../Modal/Modal.jsx';
 import { RegistrationForm } from '../RegistrationForm/RegistrationForm.jsx';
 import { LoginForm } from '../LoginForm/LoginForm.jsx';
 import css from './AppBar.module.css';
-import { useUser } from '../AuthProvider.jsx';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn, selectUser } from '../../redux/auth/selectors.js';
 
 export const AppBar = () => {
-  const { currentUser } = useUser();
+  const currentUser = useSelector(selectUser);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  console.log(currentUser);
   const { isOpenModal, openModal, closeModal } = useModal();
   const [btn, setBtn] = useState('');
 
@@ -23,8 +26,8 @@ export const AppBar = () => {
     <header className={css.header}>
       <div className={css.headerCont}>
         <Logo />
-        <Navigation authUser={currentUser} />
-        {currentUser ? (
+        <Navigation />
+        {isLoggedIn ? (
           <UserMenu user={currentUser} />
         ) : (
           <AuthMenu openModal={openModal} handleBtnAuth={handleBtnAuth} />
