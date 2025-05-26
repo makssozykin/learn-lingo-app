@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
 import { ref, query, orderByKey, limitToFirst, get } from 'firebase/database';
 import { db } from '../firebaseConfig.js';
-
-let TEACHERS_PER_PAGE = 3;
+import { useDispatch } from 'react-redux';
+import { setTeachers } from '../redux/teachers/slice.js';
 
 const useFirebaseData = () => {
   const [allTeachers, setAllTeachers] = useState([]);
-  const [newTeachers, setNewTeachers] = useState([]);
-  const [teachersPerPage, setTeachersPerPage] = useState(3);
+  const [teachersPerPage, setTeachersPerPage] = useState(4);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [hasMoreTeachers, setHasMoreTeachers] = useState(false);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchAllTechers = async () => {
@@ -30,8 +30,6 @@ const useFirebaseData = () => {
     fetchAllTechers();
   }, []);
 
-  console.log(allTeachers);
-
   useEffect(() => {
     const fetchTeachers = async () => {
       try {
@@ -48,12 +46,11 @@ const useFirebaseData = () => {
         const snapshotLimit = await get(datQuery);
 
         if (snapshotLimit.exists()) {
-          console.log(snapshotLimit.exists());
           const moreTeachers = snapshotLimit.val();
           console.log(moreTeachers);
-          setNewTeachers(moreTeachers);
+          dispatch(setTeachers(moreTeachers));
           setHasMoreTeachers(true);
-          if (Object.keys(moreTeachers).length === allTeachers.length) {
+          if (Object.keys(moreTeachers).length < teachersPerPage) {
             setHasMoreTeachers(false);
           }
         } else {
@@ -66,13 +63,12 @@ const useFirebaseData = () => {
       }
     };
     fetchTeachers();
-  }, [teachersPerPage]);
+  }, [teachersPerPage, dispatch]);
 
-  const loadMore = () => setTeachersPerPage(prev => prev + 3);
+  const loadMore = () => setTeachersPerPage(prev => prev + 4);
 
   return {
     allTeachers,
-    newTeachers,
     loading,
     error,
     loadMore,

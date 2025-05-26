@@ -3,6 +3,13 @@ import { Button } from '../Button/Button.jsx';
 import css from './TeacherCard.module.css';
 import sprite from '/icons/sprite.svg';
 import { ReadMoreTeacher } from '../ReadMoreTeacher/ReadMoreTeacher.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  selectFavouriteTeachers,
+  selectTeachers,
+} from '../../redux/teachers/selectors.js';
+import { removeFavourites, setFavourites } from '../../redux/teachers/slice.js';
+import { selectIsLoggedIn } from '../../redux/auth/selectors.js';
 
 export const TeacherCard = ({ teacher }) => {
   const {
@@ -19,13 +26,42 @@ export const TeacherCard = ({ teacher }) => {
     experience,
     reviews,
   } = teacher;
+  const dispatch = useDispatch();
   const [toggleReadMore, setToggleReadMore] = useState(false);
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  const teachers = useSelector(selectTeachers);
+  console.log(teachers);
+  const favouriteTeachers = useSelector(selectFavouriteTeachers);
+  const isFavourite = favouriteTeachers.some(
+    teacher => teacher.avatar_url === avatar_url
+  );
+  console.log(favouriteTeachers);
+  const handleFavouriteClick = () => {
+    if (isLoggedIn) {
+      isFavourite
+        ? dispatch(removeFavourites(teacher))
+        : dispatch(setFavourites(teacher));
+    } else {
+      return alert('first you need to log in');
+    }
+  };
 
   const handleClickReadMore = () => {
     setToggleReadMore(!toggleReadMore);
   };
   return (
     <li className={css.teacherCard}>
+      <div className={css.iconCont} onClick={handleFavouriteClick}>
+        {isFavourite ? (
+          <svg className={css.iconFavoriteActive}>
+            <use href={sprite + '#icon-heart'} />
+          </svg>
+        ) : (
+          <svg className={css.icon}>
+            <use href={sprite + '#icon-heart'} />
+          </svg>
+        )}
+      </div>
       <div className={css.photoContainer}>
         <img
           className={css.teacherPhoto}
